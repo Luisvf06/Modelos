@@ -17,7 +17,7 @@ class Proyecto(models.Model):
     Duración_Estimada=models.FloatField()
     Fecha_de_Inicio=models.DateField(default=timezone.now)#valor por defecto
     Fecha_de_Finalización=models.DateField()
-    colaboradores=models.ManyToManyField(Usuario)#relacion con Usuarios 1-n
+    colaboradores=models.ManyToManyField(Usuario)#relacion con Usuarios n-n
     creador=models.ForeignKey(Usuario,on_delete=models.CASCADE)#relacion con usuario 1-n
     
 class Tarea(models.Model):
