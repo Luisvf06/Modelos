@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h1>Usuario por tarea</h1>
+    {%for usuario in usuario_tarea%}
+    usuario: {{usuario.usuario.Nombre}}<br>
+    ID usuario: {{usuario.usuario.id}}<br> <!--no lo pide pero con datos random me aseguro que salen varios resultados-->
+    tarea: {{usuario.tarea.Título}}<br>
+    Observaciones: {{usuario.Observaciones}}<br>
+    Fecha de asignación: {{usuario.Fecha_de_Asignación}}<br>
+        {%endfor%}
+    
+    {%for tarea in observacion_tarea%}
+    tarea: {{tarea.tarea.Título}}<br>
+    ID tarea: {{tarea.id}}<br>
+    Observaciones: {{tarea.Observaciones}}
+    {%endfor%}
+</body>
+</html>
