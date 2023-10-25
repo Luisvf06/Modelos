@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h1>Proyectos</h1>
+    {%for proyecto in proyecto_mostrar%}
+    <p>Nombre: {{proyecto.Nombre}}</p>
+    <p>Descripción: {{proyecto.Descripción}}</p> 
+    <p>Duración Estimada: {{proyecto.Duración_Estimada}}
+    <p>Fecha Inicio: {{proyecto.Fecha_de_Inicio}}</p>
+    <p>Fecha Finalización: {{proyecto.Fecha_de_Finalización}}</p>
+    <p>Creador: {{proyecto.creador}}</p>
+    {% for colaborador in proyecto.colaboradores.all%}
+        <p>colaborador: {{colaborador.Nombre}}</p>
+    {%endfor%}
+    {%endfor%}
+    
+    {%for tarea in tarea_proyect%}
+    <p>nombre: {{tarea.Título}}</p>
+    <p>fecha de creación: {{tarea.Fecha_de_Creación}}
+        {%endfor%}
+</body>
+</html>
