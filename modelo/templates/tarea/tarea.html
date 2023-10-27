@@ -16,5 +16,11 @@
     ID tarea: {{tarea.id}}<br>
     Observaciones: {{tarea.Observaciones}}
     {%endfor%}
+
+    {% for tarea in tareas_anhos%}
+    Tarea: {{tarea.Título}}<br>
+    Creación: {{tarea.Fecha_de_Creación}}
+    {%endfor%}
+
 </body>
 </html>

@@ -2,7 +2,9 @@ from django.shortcuts import render
 from .models import Proyecto
 from .models import Tarea
 from .models import Usuario
+from .models import Comentario
 from .models import Asignacion_de_tarea
+from django.db.models import Q
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -32,4 +34,11 @@ def texto_tarea_asignacion(request, texto_observacion):
 
 def tareas_anhos(request,anho_init,anho_fin):
     tareas=Tarea.objects.select_related('proyecto')
-    #tareas=tareas.filter(Fecha_de_Creación__year<anho_init)
+    tareas=tareas.filter(Q(Fecha_de_Creación__year__gte=anho_init) & Q(Fecha_de_Creación__year__lte=anho_fin) & Q(Estadio='Co'))
+    #tareas=tareas.filter((Fecha_de_Creación__year__gte=anho_init).filter(Fecha_de_Creación__year__lte=anho_fin).filter(Estadio='Co'))
+    return render(request,'tarea/tarea.html',{'tareas_anhos':tareas})
+
+def ultimo_comentario(request,id_proyecto):
+    comentarios=Comentario.objects.select_related('tarea').prefetch_related('autor')
+    comentario=comentarios.filter(tarea__proyecto=id_proyecto).order_by('-Fecha_de_Comentario')[:1].get()
+    return render(request,'comentario/comentario.html',{'comentario':comentario})
