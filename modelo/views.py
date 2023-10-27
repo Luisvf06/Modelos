@@ -4,7 +4,8 @@ from .models import Tarea
 from .models import Usuario
 from .models import Comentario
 from .models import Asignacion_de_tarea
-from django.db.models import Q
+from .models import Etiqueta
+from django.db.models import Q,Prefetch
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -42,3 +43,19 @@ def ultimo_comentario(request,id_proyecto):
     comentarios=Comentario.objects.select_related('tarea').prefetch_related('autor')
     comentario=comentarios.filter(tarea__proyecto=id_proyecto).order_by('-Fecha_de_Comentario')[:1].get()
     return render(request,'comentario/comentario.html',{'comentario':comentario})
+
+def comentario_palabra_anho(request,palabra,anho):
+    comentarios=Comentario.objects.select_related('tarea').prefetch_related('autor')
+    comentarios=comentarios.filter(Contenido__startswith=palabra).filter(Fecha_de_Comentario__year=anho)
+    return render(request,'comentario/comentario.html',{'comentarios_palabra':comentarios})
+
+def etiquetas_proyecto(request, id_proyecto):
+    etiquetas=Etiqueta.objects.prefetch_related('tarea')
+    etiquetas=etiquetas.filter(tarea__proyecto=id_proyecto)
+    return render(request,'etiqueta/etiqueta.html',{'etiquetas_proyecto':etiquetas})
+
+def usuarios_sin_tarea(request):
+    usuarios=Usuario.objects.exclude(asignacion_de_tarea__isnull=False)#excluyo los valores no nulos de asignacion_de_tarea
+    return render(request, 'usuario/usuario.html',{'usuarios_sin_tarea':usuarios})
+
+

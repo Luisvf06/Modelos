@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h1>Ejercicio 9</h1>
+    {%for etiqueta in etiquetas_proyecto%}
+    <p>Etiqueta: {{etiqueta.etiqueta}}</p>
+    {% for tarea in etiqueta.tarea.all %}
+    <li>Tarea: {{ tarea.Título }}</li>
+    <li>Proyecto: {{ tarea.proyecto.Nombre }}</li>
+    <p></p>
+{% endfor %}
+    {%endfor%}
+
+</body>
+</html>

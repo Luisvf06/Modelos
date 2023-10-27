@@ -13,5 +13,10 @@ urlpatterns = [
     #Crear una URL que obtenga el último usuario que ha comentado en una tarea de un proyecto en concreto.
     path('comentario/comentario/<int:id_proyecto>/',views.ultimo_comentario,name='ultimo_comentario'),
     #Crear una URL que obtenga todos los comentarios de una tarea que empiecen por la palabra que se pase en la URL y que el año del comentario sea uno en concreto.
-    path('comentario/comentario/<str:palabra>/<int: anho>',views.comentario_palabra_anho,name='comentarios_palabra_fecha')
+    path('comentario/comentario/<str:palabra>/<int:anho>',views.comentario_palabra_anho,name='comentarios_palabra_fecha'),
+
+    #Crear una URL que obtenga todas las etiquetas que se han usado en todas las tareas de un proyecto.
+    path('etiqueta/etiqueta/<int:id_proyecto>/',views.etiquetas_proyecto,name='etiquetas_proyecto'),
+    #Crear una URL que muestre todos los usuarios que no están asignados a una tarea.
+    path('usuario/usuario/',views.usuarios_sin_tarea,name='usuarios_sin_tarea')
 ]

@@ -2,5 +2,14 @@
 <html>
 <head></head>
 <body>
-    Comentario {{comentario.autor.Nombre}}
+    Autor del comentario {{comentario.autor.Nombre}}<br>
+
+    <h1>Ejercicio 8:</h1>
+    {% for comentario in comentarios_palabra %}
+    Contenido: {{comentario.Contenido}}<br>
+    Fecha: {{comentario.Fecha_de_Comentario}}<br>
+    Autor: {{comentario.autor}}<br>
+    Tarea: {{comentario.tarea}}<br>
+    <p></p>
+    {%endfor%}
 </body>
