@@ -5,7 +5,12 @@ from .models import Usuario
 from .models import Comentario
 from .models import Asignacion_de_tarea
 from .models import Etiqueta
-from django.db.models import Q,Prefetch
+from django.db.models import Q
+from django.views.defaults import page_not_found
+from django.views.defaults import bad_request
+from django.views.defaults import server_error
+from django.views.defaults import permission_denied
+
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -28,10 +33,6 @@ def texto_tarea_asignacion(request, texto_observacion):
     tareas=Asignacion_de_tarea.objects.select_related('tarea')
     tareas=tareas.filter(Observaciones__contains=texto_observacion)
     return render(request,'tarea/tarea.html',{'observacion_tarea':tareas})
-
-#def proyectos_rango(request,anho_init,mes_init_dia_init,anho_fin,mes_fin,dia_fin):
-#    proyecto=Proyecto.objects.prefetch_related('colaboradores').select_related('creador')
-#    proyecto=proyecto.filter(Q(Fecha_de_Inicio__year<=anho_init)|Q(Fecha_de_Inicio__year=anho_init & Fecha_de_Inicio__month<mes_init)|Q#(Fecha_de_Inicio__year=anho_init & Fecha_de_Inicio__month=mes_init)) no soy capaz de hacer funcionar los or 
 
 def tareas_anhos(request,anho_init,anho_fin):
     tareas=Tarea.objects.select_related('proyecto')
@@ -58,4 +59,21 @@ def usuarios_sin_tarea(request):
     usuarios=Usuario.objects.exclude(asignacion_de_tarea__isnull=False)#excluyo los valores no nulos de asignacion_de_tarea
     return render(request, 'usuario/usuario.html',{'usuarios_sin_tarea':usuarios})
 
+def mi_error_400(request,exception=None):
+    return render(request,'errores/400.html',None,None,400)#solicitud incorrecta
 
+def mi_error_403(request,exception=None):
+    return render(request,'errores/403.html',None,None,403)#permiso denegado
+
+def mi_error_404(request,exception=None):
+    return render(request,'errores/404.html',None,None,404)#not found
+
+def mi_error_500(request,exception=None):
+    return render(request,'errores/500.html',None,None,500)#error del servidor
+
+
+#He intentado hacer el ejercicio 6 con el enunciado original pero no lo he conseguido
+#def proyecto_fechas(request,anho_init=2000,mes_init=1,dia_init=1,anho_fin=2023,mes_fin=12,dia_fin=31):
+#    tareas=Tarea.objects.prefetch_related('usuario').select_related('proyecto')
+#    tareas=tareas.filter(Q(proyecto__Fecha_de_Inicio__year__gte=anho_init)|Q(proyecto__Fecha_de_Inicio__year=(anho_init) & Q (proyecto__Fecha_de_Inicio__month__gte=mes_init))|Q(proyecto__Fecha_de_Inicio__year=(anho_init) & Q(proyecto__Fecha_de_Inicio__month=mes_init)& Q(proyecto__Fecha_de_Inicio__day__gte=dia_init)) & Q(proyecto__Fecha_de_Inicio__year__lte=anho_fin)|Q(proyecto__Fecha_de_Inicio__year=(anho_fin) & Q(proyecto__Fecha_de_Inicio__month__lte=mes_fin))|Q(proyecto__Fecha_de_Inicio__year=(anho_fin) & Q(proyecto__Fecha_de_Inicio__month=mes_fin)& Q(proyecto__Fecha_de_Inicio__day__lte=dia_fin)) &(Q(Estadio='Co')))
+#    return render(request,'proyecto/proyecto.html',{'proyectos_fecha':tareas})
