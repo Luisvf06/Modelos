@@ -3,7 +3,7 @@
 <body>
     <h1>Index de aplicacion Modelos</h1>
     <h2>Lista de enlaces</h2>
-    <ul>
+    <!--<ul>
         <li><a href= "{% url 'lista_proyectos' %}">Ejercicio 2 Proyectos</a></li>
         <li><a href= "{% url 'tarea_proyecto' 2%}">Ejercicio 3Tarea de cada proyecto</a></li>
         <li><a href= "{% url 'usuario_tarea' 4%}">Ejercicio 4Usuario asignado a una determinada tarea</a></li>
@@ -13,6 +13,10 @@
         <li><a href= "{% url 'comentarios_palabra_fecha' 'Fast' 2023%}">Ejercicio 8 Mostrar comentarios que empiecen por 1 palabra y sea de un año concreto</a></li>
         <li><a href= "{% url 'etiquetas_proyecto' 2%}">Ejercicio 9 Etiquetas de un proyecto</a></li>
         <li><a href= "{% url 'usuarios_sin_tarea'%}">Ejercicio 10 Usuarios sin tareas asignadas</a> </li>
-    </ul>
+    </ul>-->
+    {%extends "principal.html"%}
+    {%block enlaces%}
+
+    {%endblock%}
 </body>
 </html>
