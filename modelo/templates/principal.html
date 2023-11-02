@@ -8,7 +8,7 @@
         <script src="{% static 'javascript/tutorial.js'%}"></script>
     <head>
     <body>
-        {%block enlaces %}
+        {%block enlaces%}
         <p><a href= "{% url 'lista_proyectos' %}">Ejercicio 2 Proyectos</a></p>
         <p><a href= "{% url 'tarea_proyecto' 2%}">Ejercicio 3Tarea de cada proyecto</a></p>
         <p><a href= "{% url 'usuario_tarea' 4%}">Ejercicio 4Usuario asignado a una determinada tarea</a></p>
