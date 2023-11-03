@@ -1,0 +1,8 @@
+{%extends "principal.html"%}
+{%block contenido%}
+    <h1>Ejercicio 9</h1>
+    {%for etiqueta in etiquetas_proyecto%}
+        {%include "etiqueta/etiqueta.html"%}
+        {{etiqueta.etiqueta|title}}
+    {%endfor%}
+{%endblock%}

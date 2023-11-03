@@ -4,10 +4,16 @@
     <h1>Ejercicio 2. Proyectos</h1>
     {%for proyecto in proyecto_mostrar%}
         {%include "proyecto/proyecto.html" %}
-        
+        {%if proyecto.Fecha_de_Finalización|date:"Y" == "2023"%}{#Filtro para usar una parte de las fechas en los templates#}
+        El proyecto acaba este año
+        {%else%}
+        El proyecto no acaba este año
+        {%endif%}
     {%endfor%}
             <h2>Ejercicio 3. Tareas de un proyecto </h2>
     {%for tarea in tarea_proyect%}
-        {%include "proyecto/tarea.html"%}
+        {%include "proyecto/tareasoc.html"%}
+        {{tarea.proyecto.Nombre|upper}}<br>
+        {{tarea.proyecto.Descripción|wordcount}}
     {%endfor%}
 {%endblock%}

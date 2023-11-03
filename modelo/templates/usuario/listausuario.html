@@ -1,0 +1,14 @@
+{%extends "principal.html"%}
+{%block contenido%}
+    <h1>Ejercicio 10</h1>
+    {%for usuario in usuarios_sin_tarea%}
+        {%include "usuario/usuario.html"%}
+        {%if "Pepe" in usuario.Nombre%}
+        El usuario se llama Pepe
+        {%else%}
+        Usuario desconocido
+        {%endif%}
+        {%empty%}
+        No hay usuarios sin tareas asignadas
+    {%endfor%}
+{%endblock%}

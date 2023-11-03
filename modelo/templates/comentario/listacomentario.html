@@ -1,0 +1,23 @@
+{%extends "principal.html"%}
+
+{%block contenido%}
+    <h1>Ejercicio 7. Último usuario que comentó en una tarea de un proyecto determinado</h1>
+    Autor del comentario {{comentario.autor.Nombre}}<br>
+    {% if comentario.autor.Nombre == "Good bill ok new others."%}
+    El último comentario escrito por Good bill ok new others.
+{%else%}
+    El último comentario no fue escrito por Good bill ok new others
+{%endif%}
+
+    <h1>{{"Ejercicio"|cut:"i"}} 8:</h1>
+    {% for comentario in comentarios_palabra %}
+        {%include "comentario/comentario.html"%}
+        {%if "eat" in comentario.Contenido%}
+        La palabra eat está en el contenido del comentario
+        {%else%}
+        La palabra eat no está en el comentario
+        {%endif%}
+        {%empty%}
+        Ningún comentario comienza con esa palabra
+    {%endfor%}
+{%endblock%}

@@ -1,0 +1,38 @@
+{%extends "principal.html"%}
+{%block contenido%}
+    <h1>Ejercicio 4. Usuario por tarea por fecha</h1>
+    {%for usuario in usuario_tarea%}
+        {%include "tarea/tarea4.html"%}
+        {%empty%}
+        No hay usuarios asignados a esa tarea
+    {%endfor%}
+    <h1>Ejercicio 5. Tareas con texto X en observación</h1>   
+    {%for tarea in observacion_tarea%}
+{%include "tarea/tarea5.html"%}
+{{tarea.tarea.id|divisibleby:"2"}}<br>
+El id es{{tarea.tarea.id|get_digit:"2"}}{{tarea.tarea.id|get_digit:"1"}}<br>
+
+
+{%if tarea.tarea.id > 30 %}
+El id de la tarea es mayor que 30
+{%elif tarea.tarea.id > 10 %}
+El id de la tarea es mayor que 10
+{%elif tarea.tarea.id > 5 %}
+El id de la tarea es mayor que 5
+{%endif%}
+{% if 2 > tarea.tarea.Observaciones|length %}
+Hay pocas observaciones
+{% elif tarea.tarea.Observaciones|length >= 3 and tarea.tarea.Observaciones|length <= 5 %}
+Hay algunas observaciones
+{% else %}
+Hay muchas observaciones
+{% endif %}
+
+{%endfor%}
+
+    
+    <h1>Ejercicio 6. Tareas entre 2 años</h1>
+    {% for tarea in tareas_anhos%}
+    {%include "tarea/tarea6.html"%}
+    {%endfor%}
+{%endblock%}

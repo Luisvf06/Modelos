@@ -3,3 +3,23 @@ En el ejercicio 6, en el que hay que filtrar las tareas creadas entre dos años,
 
 En la diapositiva 49 del tema 4, pone handler404=.... pero tuve problemas haciendo los errores y al consultar el ejemplo que hicimos en clase de biblioteca, tengo handler400=handler=.... He probado ambos y funcionan igual, pero no sé si hay alguna diferencia.
 
+If: comentario/listacomentario.html
+    etiqueta/etiquetaproy.html
+    proyecto/lista.html
+    tarea/listatarea.html
+
+Empty: comentario/listacomentario.html
+        tarea/listatarea.html
+        usuario/listausuario.html
+
+Filter:
+    proyecto/lista.html
+        |date:"Y"
+        |upper
+        |wordcount
+    tarea/listatarea.html
+        |divisibleby:
+        |get_digit:
+        |length
+    etiqueta/listaetiqueta.html
+        |title

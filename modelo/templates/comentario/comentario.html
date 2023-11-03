@@ -1,14 +1,6 @@
-{%extends "principal.html"%}
-{%block contenido%}
-    <h1>Ejercicio 7. Último usuario que comentó en una tarea de un proyecto determinado</h1>
-    Autor del comentario {{comentario.autor.Nombre}}<br>
+Contenido: {{comentario.Contenido}}<br>
+Fecha: {{comentario.Fecha_de_Comentario}}<br>
+Autor: {{comentario.autor.Nombre}}<br>
+Tarea: {{comentario.tarea.Título}}<br>
 
-    <h1>Ejercicio 8:</h1>
-    {% for comentario in comentarios_palabra %}
-    Contenido: {{comentario.Contenido}}<br>
-    Fecha: {{comentario.Fecha_de_Comentario}}<br>
-    Autor: {{comentario.autor}}<br>
-    Tarea: {{comentario.tarea}}<br>
-    <p></p>
-    {%endfor%}
-{%endblock%}
+<p></p>

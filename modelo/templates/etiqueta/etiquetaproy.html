@@ -1,0 +1,12 @@
+<li>Tarea: {{ tarea.Título }}</li>
+{%if "bill" in tarea.Título and "call" in tarea.Título%} {#no es necesario que los if vayan siempre en el template lista, pueden ir en los blocks#}
+Ambas palabras están en el título de la tarea
+{%elif "all" in tarea.Título%}
+All está en el título de la tarea
+{%elif "bill" in tarea.Título %}
+La palabra bill está en la etiqueta
+{%else%}
+Ninguna de las palabras están en la etiqueta
+{%endif%}
+<li>Proyecto: {{ tarea.proyecto.Nombre }}</li>
+<p></p>
