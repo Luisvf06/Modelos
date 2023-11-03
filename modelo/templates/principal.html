@@ -1,30 +1,21 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
+    {% load static %}
     <head>
         <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+        <script src="{% static 'javascript/tutorial.js'%}"></script>
+
     </head>
     <body>
+        {%include 'nav.html'%}
         {%block cabecera%}
-        <header>
-
-        </header>
+            <p>esto es el block de la cabecera</p>
         {%endblock%}
-        <header>Cabecera de la página en header</header>
-        {%block principal%}
-
-        <div><span><a href= "{% url 'lista_proyectos' %}">Ejercicio 2 Proyectos</a></span></div>
-        <div><a href= "{% url 'tarea_proyecto' 2%}">Ejercicio 3Tarea de cada proyecto</a></div>
-        <div><a href= "{% url 'usuario_tarea' 4%}">Ejercicio 4Usuario asignado a una determinada tarea</a></div>
-        <div><a href= "{% url 'observacion_asignacion' 'two'%}">Ejercicio 5 buscar tareas con un determinado texto en la asignacion</a></di>
-        <div><a href= "{% url 'tareas_anhos' 2000 2023%}">Ejercicio 6 mostrar tareas creadas entre dos años y completadas</a></div>
-        <div><a href= "{% url 'ultimo_comentario' 2%}">Ejercicio 7 último usuario que ha comentado en un proyecto dado</a></div>
-        <div><a href= "{% url 'comentarios_palabra_fecha' 'Fast' 2023%}">Ejercicio 8 Mostrar comentarios que empiecen por 1 palabra y sea de un año concreto</a></div>
-        <div><a href= "{% url 'etiquetas_proyecto' 2%}">Ejercicio 9 Etiquetas de un proyecto</a></div>
-        <div><a href= "{% url 'usuarios_sin_tarea'%}">Ejercicio 10 Usuarios sin tareas asignadas</a></div>
+        {%block contenido%}
+            <p>Este es el block del contenido</p>
         {%endblock%}
 
-        {%block pie%}
-        <footer>Pie de pagina en footer</footer>
-        {%endblock%}
+        <img src="{% static 'imagenes/gimnasio2.jpg' %}" alt="imagen para ver que funciona">
+        {%include 'pie.html'%}
+    
     </body>

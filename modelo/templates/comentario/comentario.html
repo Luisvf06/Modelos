@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+{%extends "principal.html"%}
+{%block contenido%}
     <h1>Ejercicio 7. Último usuario que comentó en una tarea de un proyecto determinado</h1>
     Autor del comentario {{comentario.autor.Nombre}}<br>
 
@@ -13,4 +11,4 @@
     Tarea: {{comentario.tarea}}<br>
     <p></p>
     {%endfor%}
-</body>
+{%endblock%}

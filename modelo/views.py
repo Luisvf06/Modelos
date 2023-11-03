@@ -17,12 +17,12 @@ def index(request):
 
 def listar_proyectos(request):
     proyecto=Proyecto.objects.prefetch_related('colaboradores').select_related('creador')
-    return render(request,'proyecto/proyecto.html',{'proyecto_mostrar':proyecto})
+    return render(request,'proyecto/lista.html',{'proyecto_mostrar':proyecto})
 
 def tarea_proyecto(request,id_proyecto):
     tareas=Tarea.objects.select_related('proyecto')
     tareas=tareas.filter(proyecto=id_proyecto).order_by("-Fecha_de_Creación")
-    return render(request, 'proyecto/proyecto.html',{'tarea_proyect':tareas})
+    return render(request, 'proyecto/lista.html',{'tarea_proyect':tareas})
 
 def usuario_tarea(request,id_tarea):
     usuarios=Asignacion_de_tarea.objects.select_related('usuario')

@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+{%extends "principal.html"%}
+{%block contenido%}
     <h1>Ejercicio 9</h1>
     {%for etiqueta in etiquetas_proyecto%}
     <p>Etiqueta: {{etiqueta.etiqueta}}</p>
@@ -11,6 +9,4 @@
     <p></p>
 {% endfor %}
     {%endfor%}
-
-</body>
-</html>
+{%endblock%}

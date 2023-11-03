@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+{%extends "principal.html"%}
+{%block contenido%}
     <h1>Ejercicio 4. Usuario por tarea por fecha</h1>
     {%for usuario in usuario_tarea%}
     usuario: {{usuario.usuario.Nombre}}<br>
@@ -21,6 +19,4 @@
     Tarea: {{tarea.Título}}<br>
     Creación: {{tarea.Fecha_de_Creación}}
     {%endfor%}
-
-</body>
-</html>
+{%endblock%}

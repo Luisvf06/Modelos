@@ -1,0 +1,13 @@
+{%extends "principal.html"%}
+
+{%block contenido%}
+    <h1>Ejercicio 2. Proyectos</h1>
+    {%for proyecto in proyecto_mostrar%}
+        {%include "proyecto/proyecto.html" %}
+        
+    {%endfor%}
+            <h2>Ejercicio 3. Tareas de un proyecto </h2>
+    {%for tarea in tarea_proyect%}
+        {%include "proyecto/tarea.html"%}
+    {%endfor%}
+{%endblock%}

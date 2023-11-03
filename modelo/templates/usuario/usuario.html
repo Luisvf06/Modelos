@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
+{%extends "principal.html"%}
+{%block contenido%}
     <h1>Ejercicio 10</h1>
     {%for usuario in usuarios_sin_tarea%}
     <p>Usuario: {{usuario.Nombre}}</p>
     <p></p>
     {%endfor%}
-
-
-</body>
-</html>
+{%endblock%}
