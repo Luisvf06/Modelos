@@ -21,5 +21,11 @@ Filter:
         |divisibleby:
         |get_digit:
         |length
-    etiqueta/listaetiqueta.html
+    tarea/tarea4.html
+        |timesince
+    etiqueta/etiqueta.html
         |title
+    comentario/comentario.html
+        |date:
+    proyecto/colaborador.html  
+        |slice
